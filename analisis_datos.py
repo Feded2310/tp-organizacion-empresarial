@@ -1,29 +1,23 @@
-#Alumno: Federico Javier Doello 
-#ANÁLISIS DE VENTAS
-# Tecnicatura Universitaria en Programación - UTN
-
+# Alumno: Federico Javier Doello
+# ANÁLISIS DE VENTAS
+# Tecnicatura Universitaria en Programación - UTN 2026
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-#  CARGA DE DATOS
-
+# CARGA DE DATOS
 ruta_datos = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'datos', 'ventas.csv')
-
 df = pd.read_csv(ruta_datos)
-
 df['fecha'] = pd.to_datetime(df['fecha'])
 
 print("=" * 60)
-print("ANÁLISIS DE VENTAS - EMPRESA TECH DEMO")
+print("ANÁLISIS DE VENTAS - TP ORGANIZACIÓN EMPRESARIAL")
 print("=" * 60)
 print(f"\nDataset cargado correctamente: {len(df)} registros encontrados.")
 
 # CÁLCULO DE INDICADORES
-
 df['monto_total'] = df['cantidad'] * df['precio_unitario']
-
 total_ventas = df['monto_total'].sum()
 print(f"\nVentas totales del período: $ {total_ventas:,.0f}")
 
@@ -44,9 +38,8 @@ for _, fila in ventas_por_mes.iterrows():
     print(f"  {fila['mes_str']}: $ {fila['monto_total']:,.0f}")
 
 # GENERACIÓN DE GRÁFICO
-
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-fig.suptitle('Análisis de Ventas - Tech Demo 2024', fontsize=14, fontweight='bold')
+fig.suptitle('Análisis de Ventas - TP UTN 2026', fontsize=14, fontweight='bold')
 
 axes[0].bar(ventas_por_mes['mes_str'], ventas_por_mes['monto_total'], color='steelblue', edgecolor='white')
 axes[0].set_title('Evolución Mensual de Ventas')
